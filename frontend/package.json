@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.4.0",
+    "@heroicons/react": "^1.0.4",
+    "@tailwindcss/aspect-ratio": "^0.2.1",
+    "@tailwindcss/forms": "^0.3.3",
+    "date-fns": "^2.23.0",
+    "filepond": "^4.29.0",
+    "filepond-plugin-file-validate-type": "^1.2.6",
+    "filepond-plugin-image-exif-orientation": "^1.0.11",
+    "filepond-plugin-image-preview": "^4.6.8",
+    "identicon.js": "^2.3.3",
+    "next": "latest",
+    "react": "^17.0.2",
+    "react-countdown": "^2.3.2",
+    "react-countup": "^5.2.0",
+    "react-dom": "^17.0.2",
+    "react-filepond": "^7.1.1",
+    "react-sparklines": "^1.7.0",
+    "recharts": "^2.1.2",
+    "web3.storage": "^3.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4"
+  }
+}
