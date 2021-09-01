@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { TokensContext } from '../contexts/tokensContext';
 import { useRouter } from 'next/router';
 
