@@ -7,9 +7,12 @@ import { randomArray } from '../utils/misc';
 import { TokensContext } from '../contexts/tokensContext';
 
 import { randomNumber, randomChangeType } from '../utils/misc';
+import useContractTokens from "../hooks/useContractTokens";
 
 export default function TokenLeaderboard() {
   const [tokens, setTokens] = useContext(TokensContext);
+  const contractTokens = useContractTokens()
+
   return (
     <div className='flex flex-col max-w-4xl px-4 mx-auto'>
       <h3 className='text-2xl leading-6 mt-10 mb-4 drop-shadow-md font-medium text-white'>

@@ -1,0 +1,29 @@
+[package]
+name = "main_contract"
+version = "0.0.1"
+authors = ["sc"]
+edition = "2018"
+description = ""
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all instantiate/execute/query exports
+library = []
+
+[dependencies]
+cw0 = { git = "https://github.com/CosmWasm/cw-plus", tag = "v0.8.1" }
+cw2 = { git = "https://github.com/CosmWasm/cw-plus", tag = "v0.8.1" }
+cw20 = { git = "https://github.com/CosmWasm/cw-plus", tag = "v0.8.1" }
+cw20-base = { git = "https://github.com/CosmWasm/cw-plus", tag = "v0.8.1", features = ["library"] }
+cw-controllers = { git = "https://github.com/CosmWasm/cw-plus", tag = "v0.8.1" }
+cw-storage-plus = { git = "https://github.com/CosmWasm/cw-plus", tag = "v0.8.1" }
+cosmwasm-std = { version = "0.16.1", features = ["staking"] }
+protobuf = { version = "2", features = ["with-bytes"] }
+schemars = "0.8.1"
+serde = { version = "1.0.103", default-features = false, features = ["derive"] }
+thiserror = { version = "1.0.23" }
+[dev-dependencies]
+cosmwasm-schema = { version = "0.16.0" }

@@ -1,0 +1,13 @@
+{
+  "name": "scripts",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@terra-money/terra.js": "^2.0.4"
+  }
+}

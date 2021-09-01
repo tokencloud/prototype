@@ -4,11 +4,29 @@ import { CashIcon } from '@heroicons/react/solid';
 import ChangeArrow from './change-arrow';
 import { randomChangeType, randomNumber } from '../utils/misc';
 
-import { useContext } from 'react';
-import { UserContext } from '../contexts/userContext';
+import { useMemo } from 'react';
+import { useConnectedWallet, useWallet, WalletStatus } from "@terra-money/wallet-provider";
 
 export default function Navbar() {
-  const [user, setUser] = useContext(UserContext);
+  const {
+    status,
+    availableInstallTypes, install, // TODO: implement terra station install
+    connect,
+    disconnect,
+  } = useWallet();
+
+  const connectedWallet = useConnectedWallet();
+
+  const addressInfo = useMemo(() => {
+    if (connectedWallet) {
+      const address = connectedWallet.terraAddress;
+      const networkName = connectedWallet.network.name !== 'mainnet' ? `${connectedWallet.network.name} ` : '';
+      return `${networkName}${address.substring(0, 6)}...${address.substring(address.length - 6)}`;
+    }
+    return '';
+  }, [connectedWallet]);
+
+
   return (
     <div className='bg-gradient-to-b from-black/70 via-black/50 to-transparent'>
       <div className='max-w-5xl mx-auto px-8'>
@@ -34,40 +52,48 @@ export default function Navbar() {
               />
             </a>
             <Link href='/'>
-              <a className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
+              <a
+                className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
                 🚀 Leaderboard
               </a>
             </Link>
 
             <Link href='/stake'>
-              <a className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
+              <a
+                className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
                 🧑‍🌾 Stake
               </a>
             </Link>
 
             <Link href='/mint'>
-              <a className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
+              <a
+                className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
                 🏦 Mint
               </a>
             </Link>
           </div>
           <div className='hidden sm:flex items-center '>
-            {user === null ? (
+            {status === WalletStatus.WALLET_NOT_CONNECTED ? (
               <button
                 type='button'
-                onClick={() => setUser('luna..2X74')}
+                onClick={() => connect('CHROME_EXTENSION')}
                 className='relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
                 <CashIcon className='-ml-1 mr-2 h-5 w-5' aria-hidden='true' />
                 <span>Connect</span>
               </button>
             ) : (
-              <button
-                onClick={() => setUser(null)}
-                type='button'
-                className='relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
-                <CashIcon className='-ml-1 mr-2 h-5 w-5' aria-hidden='true' />
-                <span>{user}</span>
-              </button>
+              <>
+                <label htmlFor="disconnectButton">Disconnect</label>
+                <button
+                  id='disconnectButton'
+                  onClick={() => disconnect()}
+                  type='button'
+                  title={"Disconnect from: " + addressInfo}
+                  className='relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+                  <CashIcon className='-ml-1 mr-2 h-5 w-5' aria-hidden='true' />
+                  <span>{addressInfo}</span>
+                </button>
+              </>
             )}
           </div>
         </div>

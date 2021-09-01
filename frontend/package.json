@@ -10,6 +10,8 @@
     "@heroicons/react": "^1.0.4",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
+    "@terra-money/terra.js": "^1.8.5",
+    "@terra-money/wallet-provider": "^1.2.0",
     "date-fns": "^2.23.0",
     "filepond": "^4.29.0",
     "filepond-plugin-file-validate-type": "^1.2.6",
