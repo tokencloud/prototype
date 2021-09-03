@@ -1,10 +1,8 @@
 import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { TokensContext } from '../contexts/tokensContext';
-
+import Link from 'next/link';
 import { storeFiles } from '../utils/storage';
-
-import ReactDOM from 'react-dom';
 
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond';
@@ -76,12 +74,20 @@ export default function CreateInput({ setSelected }) {
               </h3>
               <p className='mt-3 text-md font-light text-gray-50'>
                 Minted tokens have a fixed supply of 10,000 tokens. As a
-                creator, you'll receive 1,000 tokens, and 1,000 tokens will be
-                held in the community treasury. Token issuance and price is
-                based on a <span className='underline'>price demand curve</span>
+                creator, you'll receive 10% of sale proceeds & 10% will be go to
+                the community treasury. Token issuance and price is based on a{' '}
+                <span className='underline hover:font-semibold'>
+                  <Link href='/tokenomics'>
+                    <a> price demand curve</a>
+                  </Link>
+                </span>
                 . Creator tokens can be{' '}
-                <span className='underline'>backed by TNY tokens</span> to help
-                drive demand 🚀
+                <span className='underline hover:font-semibold'>
+                  <Link href='/stake'>
+                    <a>backed by TNY tokens</a>
+                  </Link>
+                </span>{' '}
+                to help drive demand 🚀
               </p>
             </div>
 

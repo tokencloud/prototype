@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState, useContext } from 'react';
+import { Fragment, useRef, useState, useContext, useEffect } from 'react';
 import { TokensContext } from '../contexts/tokensContext';
 
 import { Dialog, Transition } from '@headlessui/react';
@@ -11,7 +11,7 @@ export default function Example({ open, setOpen, token, value }) {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const cancelButtonRef = useRef(null);
 
-  function financial(x) {
+  function rounded(x) {
     return Number.parseFloat(x).toFixed(2);
   }
 
@@ -19,14 +19,13 @@ export default function Example({ open, setOpen, token, value }) {
     const index = tokens.findIndex((el) => el.symbol == id);
     tokens[index] = {
       name: tokens[index]?.name,
-      price: financial(tokens[index]?.price + 43.43),
+      price: rounded(tokens[index]?.price + 43.43),
       symbol: tokens[index]?.symbol,
       imageUrl: tokens[index]?.imageUrl,
       description: tokens[index]?.description,
     };
-    console.log(tokens);
 
-    setTokens(tokens);
+    setTokens([...tokens]);
   }
 
   return (
@@ -104,9 +103,10 @@ export default function Example({ open, setOpen, token, value }) {
                   onClick={() => {
                     setIsConfirmed(true);
                     boostToken(token.symbol);
+
                     setTimeout(function () {
-                      setOpen(false);
                       setIsConfirmed(false);
+                      setOpen(false);
                     }, 2000);
                   }}>
                   {isConfirmed ? (

@@ -13,3 +13,7 @@ export function randomArray() {
 export function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
+
+export function randomNumberRange(max) {
+  return Math.floor(Math.random() * max) + 49;
+}

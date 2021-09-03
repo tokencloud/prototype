@@ -5,7 +5,10 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import 'tailwindcss/tailwind.css';
 
-import { StaticWalletProvider, WalletProvider } from '@terra-money/wallet-provider';
+import {
+  StaticWalletProvider,
+  WalletProvider,
+} from '@terra-money/wallet-provider';
 import { TokensContext } from '../contexts/tokensContext';
 import { initialTokens } from '../utils/data';
 
@@ -16,7 +19,7 @@ const main = {
   chainID: 'columbus-4',
   lcd: 'https://lcd.terra.dev',
   fcd: 'https://fcd.terra.dev',
-  mainContractAddress: null
+  mainContractAddress: null,
 };
 
 const test = {
@@ -24,7 +27,7 @@ const test = {
   chainID: 'tequila-0004',
   lcd: 'https://tequila-lcd.terra.dev',
   fcd: 'https://tequila-fcd.terra.dev',
-  mainContractAddress: null
+  mainContractAddress: null,
 };
 
 const bombay = {
@@ -37,39 +40,38 @@ const bombay = {
 const walletConnectChainIds = {
   0: main,
   1: test,
-  2: bombay
+  2: bombay,
 };
 
 export default function MyApp({ Component, pageProps }) {
-  const [tokens, setTokens] = useState(initialTokens);
+  const [tokens, setTokens] = useState([...initialTokens]);
 
-  const main = <TokensContext.Provider value={[tokens, setTokens]}>
-    <Head>
-      <title>TinyTerra</title>
-      <link rel='icon' href='/favicon.ico' />
-      <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
-    </Head>
-    <div className='content-center bg-bg bg-cover min-h-screen'>
-      <div className='min-h-screen bg-black/40'>
-        <Navbar />
-        <Component {...pageProps} />
+  const main = (
+    <TokensContext.Provider value={[tokens, setTokens]}>
+      <Head>
+        <title>TinyTerra</title>
+        <link rel='icon' href='/favicon.ico' />
+        <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
+      </Head>
+      <div className='content-center bg-bg bg-cover min-h-screen'>
+        <div className='min-h-screen bg-black/40'>
+          <Navbar />
+          <Component {...pageProps} />
+        </div>
+        <div className='bg-black/40'>
+          <Footer />
+        </div>
       </div>
-      <div className='bg-black/40'>
-        <Footer />
-      </div>
-    </div>
-  </TokensContext.Provider>
+    </TokensContext.Provider>
+  );
 
   return typeof window !== 'undefined' ? (
     <WalletProvider
       defaultNetwork={bombay}
-      walletConnectChainIds={walletConnectChainIds}
-    >
+      walletConnectChainIds={walletConnectChainIds}>
       {main}
     </WalletProvider>
   ) : (
-    <StaticWalletProvider defaultNetwork={bombay}>
-      {main}
-    </StaticWalletProvider>
+    <StaticWalletProvider defaultNetwork={bombay}>{main}</StaticWalletProvider>
   );
 }

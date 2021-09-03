@@ -1,8 +1,4 @@
-import {
-  StopIcon,
-  CalendarIcon,
-  CubeTransparentIcon,
-} from '@heroicons/react/solid';
+import { StopIcon } from '@heroicons/react/solid';
 
 export default function TokenHeader({ token }) {
   return (

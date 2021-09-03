@@ -27,7 +27,7 @@ export default function Example() {
                   <dt className='order-2 mt-2 text-lg leading-6 font-light text-gray-200'>
                     🌎 TNY Rewards <br />
                     <span className='underline font-medium cursor-pointer hover:no-underline mr-2 text-sm'>
-                      Claim
+                      Claim to wallet
                     </span>
                     💰
                     <br />

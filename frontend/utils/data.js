@@ -1,5 +1,3 @@
-import { randomNumber, randomChangeType } from '../utils/misc';
-
 export const initialTokens = [
   {
     name: 'Fire',

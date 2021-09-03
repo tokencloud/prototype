@@ -1,11 +1,10 @@
 import React from 'react';
+import Link from 'next/link';
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
-function randomArray() {
-  return Array.from({ length: 20 }, () => Math.floor(Math.random() * 40));
-}
+import { randomArray, randomNumberRange } from '../utils/misc';
 
-export default function TokenChart() {
+export default function TokenChart({ token }) {
   return (
     <div className='backdrop-filter backdrop-blur-md bg-gray-800/50 shadow rounded-lg py-3 px-5'>
       <div className='text-center'>
@@ -29,37 +28,39 @@ export default function TokenChart() {
           </Sparklines>
 
           <div className='text-left mt-6 mb-2 font-light text-lg text-white'>
-            Tokenomics
+            Tokenomics{' '}
+            <span className='hover:font-bold underline text-sm font-medium'>
+              <Link href='/tokenomics'>
+                <a>Price Curve</a>
+              </Link>
+            </span>
           </div>
 
-          <ProgressBar progressPercentage={70} />
+          <ProgressBar progressPercentage={70} token={token} />
         </div>
       </div>
     </div>
   );
 }
 
-const ProgressBar = ({ progressPercentage }) => {
+const ProgressBar = ({ progressPercentage, token }) => {
   return (
     <div className='h-10 w-full bg-gray-800/50 rounded-lg'>
       <div
         style={{ marginLeft: '90%' }}
         className='absolute mt-1 text-white font-semibold text-xs'>
-        10,000 FIR
+        10,000 {token.symbol}
       </div>
       <div
         style={{ marginLeft: `${progressPercentage - 6.5}%` }}
         className='text-white
         absolute mt-12'>
         <div className='h-8 pt-1 px-1 w-30 rounded-lg bg-indigo-600 relative'>
-          🔥 3,700 left
-          <div className='absolute -top-2 left-6 h-0 w-0 border-8 bg-indigo-600 transform border-b-transparent border-r-transparent rotate-45'></div>
+          🔥 {randomNumberRange(100) + 3500} left
         </div>
       </div>
-      <div
-        style={{ marginLeft: `${progressPercentage / 3}%` }}
-        className='text-white text-xs absolute mt-12'>
-        💰 Backed by $343 in TNY
+      <div className='text-white text-sm absolute mt-12'>
+        💰 Backed by ${randomNumberRange(2500)} in TNY
       </div>
 
       <div
