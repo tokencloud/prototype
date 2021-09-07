@@ -2,16 +2,16 @@
 
 ## Front End
 
-Next.js + Tailwind CSS - [Front End Demo](https://tinyterra.vercel.app)
+Next.js + Tailwind CSS - [🌐 Front End Demo](https://tinyterra.vercel.app)
 
 ## Back End
 
-Cosmwasm - [Back End](https://github.com/tokencloud/prototype/tree/main/backend)
+Cosmwasm - [🤖 Back End Code](https://github.com/tokencloud/prototype/tree/main/backend)
 
 ## Video Demo
 
-[via Youtube](https://www.youtube.com/watch?v=jsBOjQjJWmo)
+[📺 Youtube](https://www.youtube.com/watch?v=jsBOjQjJWmo)
 
 ## Deck
 
-[Slides](https://bit.ly/3BMZdsE)
+[📣 Slides](https://bit.ly/3BMZdsE)
