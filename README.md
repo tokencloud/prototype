@@ -10,7 +10,7 @@ Cosmwasm - [Back End](https://github.com/tokencloud/prototype/tree/main/backend)
 
 ## Video Demo
 
-[Via Youtube](https://www.youtube.com/watch?v=jsBOjQjJWmo)
+[via Youtube](https://www.youtube.com/watch?v=jsBOjQjJWmo)
 
 ## Deck
 
