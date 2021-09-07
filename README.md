@@ -6,11 +6,11 @@ Next.js + Tailwind CSS - [Front End Demo](https://tinyterra.vercel.app)
 
 ## Back End
 
-Cosmwasm
+Cosmwasm - [Back End](https://github.com/tokencloud/prototype/tree/main/backend)
 
 ## Video Demo
 
-[Youtube](https://www.youtube.com/watch?v=jsBOjQjJWmo)
+[Via Youtube](https://www.youtube.com/watch?v=jsBOjQjJWmo)
 
 ## Deck
 
